@@ -87,7 +87,7 @@ class SolutionV1 {
     }
 
     public static int charToInt(Character ch) {
-        return (int)ch & 0xf;
+        return (int)ch & 0x1f;
     }
 }
 
@@ -160,6 +160,6 @@ class Solution {
     }
 
     public static int charToInt(Character ch) {
-        return (int)ch & 0xf;
+        return (int)ch & 0x1f;
     }
 }

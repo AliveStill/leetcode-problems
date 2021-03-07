@@ -1,5 +1,8 @@
 package alivestill.utils;
 
+import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+
 import java.util.Random;
 
 // useage: 1000 0 2500 false ,
@@ -38,5 +41,26 @@ public class IntsGenerator {
                 System.out.println();
             }
         }
+    }
+
+    @Test
+    @DisplayName("generate 1000 int between 0 and 10000 for Q477")
+    public void Q1000DataGenerate() {
+        Random random = new Random();
+        int count = 1024;
+        StringBuilder withIndent = new StringBuilder();
+        StringBuilder withoutIndent = new StringBuilder();
+        while (count-- != 0) {
+            int num = random.nextInt(10000);
+            withoutIndent.append(num).append(",");
+            withIndent.append(String.format("%6d, ", num));
+            if ((count & 0xf) == 0x0) {
+                withIndent.append("\n");
+            }
+        }
+        System.out.println("Without Indent Version:");
+        System.out.println(withoutIndent);
+        System.out.println("\n-------------------\n");
+        System.out.println(withIndent);
     }
 }
