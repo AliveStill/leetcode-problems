@@ -12,7 +12,7 @@ public class UnionFind {
         }
     }
     public void union(int xidx, int yidx) {
-        // trivial, make the eldest ancestor of x father of eldest ancestor of y
+        // non-trivial, make the eldest ancestor of x father of eldest ancestor of y
         array[find(yidx)] = array[find(xidx)];
     }
     /// @brief find with path compact

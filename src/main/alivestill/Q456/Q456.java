@@ -10,11 +10,11 @@ public class Q456 {
         int[] array = new int[] {
                 -1,3,2,0
         };
-        System.out.println(so.find132pattern(array));
+        System.out.println(so.find132pattern(array));   // true -1, 3, 2
         array = new int[] {
                 10,12,6,8,3,11
         };
-        System.out.println(so.find132pattern(array));
+        System.out.println(so.find132pattern(array));   // true, 10, 12, 11
     }
 }
 
@@ -109,7 +109,7 @@ class SolutionV3 {
     }
 }
 
-class Solution {
+class SolutionV4 {
     /// @brief O(n^3), brute force, TLE
     public boolean find132pattern(int[] nums) {
         int lens = nums.length;
@@ -152,6 +152,37 @@ class Solution {
                     }
                     backward.remove(j); // acceleration
                 }
+            }
+        }
+        return false;
+    }
+}
+
+class Solution {
+    /// @brief stack
+    public boolean find132pattern(int[] nums) {
+        int lens = nums.length;
+        if (lens < 3) {
+            return false;
+        }
+        int[] prefix = new int[lens + 1];   // minimal element of prefix
+        prefix[0] = Integer.MAX_VALUE;
+        for (int i = 0; i < lens; ++ i) {
+            prefix[i + 1] = Math.min(prefix[i], nums[i]);
+        }
+        Deque<Integer> stack = new ArrayDeque<>();
+        stack.addLast(nums[lens - 1]);
+        for (int i = lens - 2; i >= 0; -- i) {
+            if (nums[i] < stack.peekLast()) {
+                stack.addLast(nums[i]);
+            } else if (nums[i] > stack.peekLast()) {
+                while (!stack.isEmpty() && nums[i] >= stack.peekLast()) {
+                    if (nums[i] != stack.peekLast() && stack.peekLast() > prefix[i]) {
+                        return true;
+                    }
+                    stack.removeLast();
+                }
+                stack.addLast(nums[i]);
             }
         }
         return false;

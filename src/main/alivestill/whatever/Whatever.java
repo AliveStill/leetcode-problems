@@ -3,10 +3,7 @@ package alivestill.whatever;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Whatever {
     public static void main(String[] args) {
@@ -23,5 +20,11 @@ public class Whatever {
         }
     }
 
+    @Test
+    @DisplayName("ensure insertion point")
+    public void ensureInsertionPoint() {
+        int[] array = new int[]{1, 3, 6, 10};
+        System.out.println(Arrays.binarySearch(array, 7));
+    }
 
 }
