@@ -7,6 +7,8 @@ public class TestMD5 {
         System.out.println(md5.getMD5("凌海军"));
         System.out.println(md5.getMD5("alivestill"));
         System.out.println(md5.getMD5("AliveStill"));
+        System.out.println(md5.getMD5("alivestil"));
+        System.out.println(md5.getMD5("litsevila"));
         System.out.println(md5.getMD5("lingh"));
     }
 }
